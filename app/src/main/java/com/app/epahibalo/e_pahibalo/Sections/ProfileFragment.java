@@ -43,6 +43,7 @@ import com.app.epahibalo.e_pahibalo.Activities.RegisterActivity;
 import com.app.epahibalo.e_pahibalo.Helpers.DateParser;
 import com.app.epahibalo.e_pahibalo.Helpers.GlideApp;
 import com.app.epahibalo.e_pahibalo.Helpers.URL;
+import com.app.epahibalo.e_pahibalo.Helpers.UserSession;
 import com.app.epahibalo.e_pahibalo.ItemAdapters.ItemAdapters.FeedItemAdapter;
 import com.app.epahibalo.e_pahibalo.ItemAdapters.ItemModels.FeedItem;
 import com.app.epahibalo.e_pahibalo.Model.Barangay;
@@ -89,8 +90,8 @@ public class ProfileFragment extends Fragment {
     private static final int CAMERA_REQUEST_CODE = 101;
     protected static final int INCIDENT_SUBMITTED = 3;
     public static Handler handler;
+    public static Bundle profee;
     ProgressDialog dialog;
-
     MaterialEditText firstname, middlename,lastname,dob,gender,contact,streetpurok,brgy,city,zipcode;
     Button editBtn;
 
@@ -98,6 +99,7 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         View view  = inflater.inflate(R.layout.fragment_profile,container,false);
 
         parser = new DateParser();
@@ -129,6 +131,8 @@ public class ProfileFragment extends Fragment {
         recyclerProfile.setLayoutManager(layoutManager);
         recyclerProfile.setItemAnimator(new DefaultItemAnimator());
         recyclerProfile.setAdapter(feedItemAdapter);
+
+
 
         my_profile_layout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -462,7 +466,8 @@ public class ProfileFragment extends Fragment {
                                 String mobile = data.getString("mobilenum");
                                 String zipcode = data.getString("zipcode");
 
-
+                                profileData.put("citizen_id",citizen_id);
+                                profileData.put("profilepic",profilePic);
                                 profileData.put("firstname",firstname);
                                 profileData.put("middlename",middlename);
                                 profileData.put("lastname",lastname);
@@ -548,6 +553,7 @@ public class ProfileFragment extends Fragment {
         };
 
 
+
         editProfilePictureBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -557,6 +563,8 @@ public class ProfileFragment extends Fragment {
 
         return view;
     }
+
+
 
     public void showDetails(final View view){
 

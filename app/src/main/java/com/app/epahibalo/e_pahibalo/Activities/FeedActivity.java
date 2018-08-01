@@ -11,6 +11,8 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
@@ -21,12 +23,15 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import com.app.epahibalo.e_pahibalo.PostIncidentFragment;
 import com.app.epahibalo.e_pahibalo.R;
+import com.app.epahibalo.e_pahibalo.Sections.AboutFragment;
 import com.app.epahibalo.e_pahibalo.Sections.NewsFeedFragment;
+import com.app.epahibalo.e_pahibalo.Sections.PinnedPostFragment;
 import com.app.epahibalo.e_pahibalo.Sections.ProfileFragment;
 import com.app.epahibalo.e_pahibalo.SectionsPageAdapter;
 import com.app.epahibalo.e_pahibalo.SocketIntentService;
@@ -53,10 +58,12 @@ public class FeedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
 
-        sectionsPageAdapter = new SectionsPageAdapter(getSupportFragmentManager());
+//        sectionsPageAdapter = new SectionsPageAdapter(getSupportFragmentManager());
         viewPager = (ViewPager)findViewById(R.id.viewPager);
-        postIncidentButton = findViewById(R.id.postIncidentBtn);
+        //postIncidentButton = findViewById(R.id.postIncidentBtn);
         setupViewPager(viewPager);
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)
+                findViewById(R.id.bottom_navigation);
         Bundle extras = getIntent().getExtras();
 
 
@@ -66,12 +73,36 @@ public class FeedActivity extends AppCompatActivity {
         intent.putExtra("username",username);
         startService(intent);
 
-        postIncidentButton.setOnClickListener(new View.OnClickListener() {
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                dispatchTakePictureIntent();
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_news_feed:
+                        viewPager.setCurrentItem(0);
+                        return true;
+                    case R.id.action_profile:
+                        viewPager.setCurrentItem(1);
+                        return true;
+                    case R.id.action_pinned_post:
+                        viewPager.setCurrentItem(2);
+                        return true;
+                    case R.id.action_post_incident:
+                        dispatchTakePictureIntent();
+                        return true;
+                    case R.id.action_about:
+                        viewPager.setCurrentItem(3);
+                        return true;
+                }
+                return false;
             }
         });
+
+//        postIncidentButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                dispatchTakePictureIntent();
+//            }
+//        });
 
 
         handler = new Handler(){
@@ -95,15 +126,22 @@ public class FeedActivity extends AppCompatActivity {
             }
         };
 
-        TabLayout tabLayout = (TabLayout)findViewById(R.id.action_tabs);
-        tabLayout.setupWithViewPager(viewPager);
+        //TabLayout tabLayout = (TabLayout)findViewById(R.id.action_tabs);
+        //tabLayout.setupWithViewPager(viewPager);
 
     }
 
     private void setupViewPager(ViewPager viewPager){
+//        SectionsPageAdapter adapter = new SectionsPageAdapter(getSupportFragmentManager());
+//        adapter.initializeFragment(new NewsFeedFragment(),"News Feed");
+//        adapter.initializeFragment(new ProfileFragment(),"Profile");
+//        viewPager.setAdapter(adapter);
         SectionsPageAdapter adapter = new SectionsPageAdapter(getSupportFragmentManager());
+
         adapter.initializeFragment(new NewsFeedFragment(),"News Feed");
-        adapter.initializeFragment(new ProfileFragment(),"Profile");
+        adapter.initializeFragment(new ProfileFragment(),"My Profile");
+        adapter.initializeFragment(new PinnedPostFragment(),"Pinned Post");
+        adapter.initializeFragment(new AboutFragment(),"About");
         viewPager.setAdapter(adapter);
     }
 

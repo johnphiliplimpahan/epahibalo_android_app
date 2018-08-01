@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import com.app.epahibalo.e_pahibalo.R;
 
 
-public class NotificationsFragment extends Fragment {
+public class AboutFragment extends Fragment {
 
 
     @Override

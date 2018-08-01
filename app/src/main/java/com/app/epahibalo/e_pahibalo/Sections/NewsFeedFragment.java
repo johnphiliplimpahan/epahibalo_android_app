@@ -33,7 +33,6 @@ public class NewsFeedFragment extends Fragment {
     private List<FeedItem> feedItemsList = new ArrayList<>();
     RecyclerView recyclerNewsFeed;
     public static Handler handler;
-    ProgressDialog dialog;
 
     @SuppressLint("HandlerLeak")
     @Override
@@ -42,15 +41,11 @@ public class NewsFeedFragment extends Fragment {
         View view  = inflater.inflate(R.layout.fragment_news_feed,container,false);
         recyclerNewsFeed = view.findViewById(R.id.recyclerNewsFeed);
         feedItemAdapter = new FeedItemAdapter(feedItemsList,getContext());
-        dialog = new ProgressDialog(getContext());
-
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerNewsFeed.setLayoutManager(layoutManager);
         recyclerNewsFeed.setItemAnimator(new DefaultItemAnimator());
         recyclerNewsFeed.setAdapter(feedItemAdapter);
 
-        dialog.setMessage("Loading incidents");
-        dialog.show();
 
         handler = new Handler(){
             @Override
@@ -61,7 +56,6 @@ public class NewsFeedFragment extends Fragment {
 
                     feedItemsList.add(item);
                     feedItemAdapter.notifyDataSetChanged();
-                    dialog.dismiss();
                 }
             }
         };

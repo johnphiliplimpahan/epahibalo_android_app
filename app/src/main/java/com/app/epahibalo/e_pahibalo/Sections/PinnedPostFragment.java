@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import com.app.epahibalo.e_pahibalo.R;
 
 
-public class ConnectionsFragment extends Fragment {
+public class PinnedPostFragment extends Fragment {
 
 
     @Override

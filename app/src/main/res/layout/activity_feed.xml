@@ -6,50 +6,65 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    android:background="@android:color/holo_orange_light"
+    android:background="#d7ccc8"
     tools:context=".Activities.FeedActivity">
 
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/postIncidentBtn"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="23dp"
-        android:layout_marginEnd="21dp"
-        android:backgroundTint="#8e24aa"
-        android:clickable="true"
-        android:focusable="true"
-        android:src="@drawable/ic_menu_camera"
-        android:theme="@style/Widget.Design.FloatingActionButton"
-        app:elevation="5dp"
-        app:layout_anchor="@+id/viewPager"
-        app:layout_anchorGravity="right|bottom"
-        app:rippleColor="@android:color/holo_purple"
-        tools:ignore="RtlCompat" />
-
-
-    <android.support.design.widget.TabLayout
-        android:id="@+id/action_tabs"
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
         android:background="@color/colorPrimary"
-        android:elevation="6dp"
-        android:persistentDrawingCache="animation|all"
-        android:splitMotionEvents="false"
-        app:tabIndicatorColor="@color/colorPrimaryDark"
-        app:tabSelectedTextColor="@android:color/background_light"
-        app:tabTextColor="@color/cardview_light_background">
+        app:itemBackground="@color/colorPrimary"
+        app:itemIconTint="@drawable/nav_item_states"
+        app:itemTextColor="@drawable/nav_item_states"
+        app:elevation="5dp"
+        app:menu="@menu/activity_feed_drawer">
 
-    </android.support.design.widget.TabLayout>
+
+    </android.support.design.widget.BottomNavigationView>
+    <!--<android.support.design.widget.FloatingActionButton-->
+        <!--android:id="@+id/postIncidentBtn"-->
+        <!--android:layout_width="60dp"-->
+        <!--android:layout_height="60dp"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_marginBottom="23dp"-->
+        <!--android:layout_marginEnd="21dp"-->
+        <!--android:backgroundTint="#8e24aa"-->
+        <!--android:clickable="true"-->
+        <!--android:focusable="true"-->
+        <!--android:src="@drawable/ic_menu_camera"-->
+        <!--android:theme="@style/Widget.Design.FloatingActionButton"-->
+        <!--app:elevation="5dp"-->
+        <!--app:layout_anchor="@+id/viewPager"-->
+        <!--app:layout_anchorGravity="right|bottom"-->
+        <!--app:rippleColor="@android:color/holo_purple"-->
+        <!--tools:ignore="RtlCompat" />-->
+
+
+    <!--<android.support.design.widget.TabLayout-->
+        <!--android:id="@+id/action_tabs"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/colorPrimary"-->
+        <!--android:elevation="6dp"-->
+        <!--android:persistentDrawingCache="animation|all"-->
+        <!--android:splitMotionEvents="false"-->
+        <!--app:tabIndicatorColor="@color/colorPrimaryDark"-->
+        <!--app:tabSelectedTextColor="@android:color/background_light"-->
+        <!--app:tabTextColor="@color/cardview_light_background">-->
+
+    <!--</android.support.design.widget.TabLayout>-->
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/action_tabs"
+        android:layout_above="@id/bottom_navigation"
         android:animateLayoutChanges="true">
 
     </android.support.v4.view.ViewPager>
