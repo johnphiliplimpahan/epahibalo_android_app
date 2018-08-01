@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10sp"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="EDIT Profile"
+                android:textAllCaps="true"
+                android:layout_marginTop="30dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginBottom="30dp"
+                android:textStyle="bold"
+                android:textSize="24sp" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/update_profile_firstname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="First Name"
+                android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                android:inputType="textPersonName"
+                app:met_floatingLabel="normal" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/update_profile_middlename"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Middle Name (optional)"
+                android:inputType="textPersonName"
+                android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                app:met_floatingLabel="normal" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/update_profile_lastname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Last Name"
+                android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                android:inputType="textPersonName"
+                app:met_floatingLabel="normal" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/update_profile_bdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Birth Date"
+                android:inputType="date"
+                app:met_floatingLabel="normal"/>
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/update_profile_gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Gender"
+                app:met_floatingLabel="normal" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/update_profile_contactno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Contact Number"
+                android:inputType="number"
+                android:digits="0123456789"
+                android:maxLength="11"
+                app:met_maxCharacters="11"
+                app:met_floatingLabel="normal"/>
+
+
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/update_profile_street"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+                android:hint="Street/Purok"
+                app:met_floatingLabel="normal"/>
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/update_profile_brgy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Barangay"
+                app:met_floatingLabel="normal"/>
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/update_profile_city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:text="Ozamiz City"
+                app:met_floatingLabel="normal"/>
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/update_profile_zipcode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Zip Code"
+                android:digits="0123456789"
+                android:inputType="textPersonName"
+                app:met_floatingLabel="normal" />
+
+            <Button
+                android:id="@+id/update_profile_updateBtn"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="match_parent"
+                android:background="@color/colorPrimaryDark"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="UPDATE PROFILE"
+                android:textColor="#FAFAFA"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
